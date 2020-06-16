@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+
 * Added support for operation of Synapse FirewallRule
     - Add `New-AzSynapseFirewallRule` cmdlet 
     - Add `Remove-AzSynapseFirewallRule` cmdlet 

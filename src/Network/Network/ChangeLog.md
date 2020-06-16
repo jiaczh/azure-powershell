@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Added support for AddressPrefixType parameter to `Remove-AzExpressRouteCircuitConnectionConfig`
 * Added new cmdlets for Azure FirewallPolicy
     - New-AzFirewallPolicyDnsSetting

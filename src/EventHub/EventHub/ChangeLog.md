@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Added Managed Identity parameters to 1New-AzEventHubNamespace1 and 1Set-AzEventHubNamespace1 cmdlets
 
 ## Version 1.4.3
