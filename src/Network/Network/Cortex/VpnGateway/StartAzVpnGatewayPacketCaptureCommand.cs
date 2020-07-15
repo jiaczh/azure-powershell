@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Azure.Commands.Network.Models;
+﻿using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Network.Models.Cortex;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models.Cortex;
 
 namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 {
-
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnGatewayPacketCapture",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnGatewayName, SupportsShouldProcess = true), OutputType(typeof(PSVpnGatewayPacketCaptureResult))]
-    class StartAzVpnGatewayPacketCaptureCommand : VpnGatewayBaseCmdlet
+    public class StartAzVpnGatewayPacketCaptureCommand : VpnGatewayBaseCmdlet
     {
         [Parameter(
-           ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
-           Mandatory = true,
-           HelpMessage = "The resource group name.")]
+                  ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
+                  Mandatory = true,
+                  HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -103,11 +100,10 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                     Tag = existingVpnGateway.Tag,
                     ResourceGuid = existingVpnGateway.ResourceGuid,
                     Location = existingVpnGateway.Location,
-
                 };
                 output.StartTime = DateTime.UtcNow;
+                var result = this.VpnGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
                 output.EndTime = DateTime.UtcNow;
-                string result = this.VpnGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
                 WriteObject(output);
             }
         }

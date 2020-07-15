@@ -10,7 +10,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnGatewayPacketCapture",
-        DefaultParameterSetName = "ByName", SupportsShouldProcess = true), OutputType(typeof(PSVpnGatewayPacketCaptureResult))]
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnGatewayName, SupportsShouldProcess = true), OutputType(typeof(PSVpnGatewayPacketCaptureResult))]
     public class StopAzVpnGatewayPacketCaptureCommand : VpnGatewayBaseCmdlet
     {
         [Parameter(

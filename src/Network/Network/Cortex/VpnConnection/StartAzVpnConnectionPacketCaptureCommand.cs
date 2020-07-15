@@ -25,7 +25,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Network.Cortex.VpnConnection
 {
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnectionPacketCapture",
-        DefaultParameterSetName = "ByName"
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName
         , SupportsShouldProcess = true)
         , OutputType(typeof(PSVpnConnectionPacketCaptureResult))]
     public class StartAzVpnConnectionPacketCaptureCommand : VpnConnectionBaseCmdlet

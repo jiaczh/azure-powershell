@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/start-azvpnconnectionpacketcapture
@@ -14,23 +14,22 @@ Starts Packet Capture Operation on a Vpn Connection.
 
 ### ByVpnConnectionName (Default)
 ```
-Start-AzVpnConnectionPacketCapture -ResourceGroupName <String> -ParentResourceName <String> -Name <String> -LinkConnectionName <String>
- [-FilterData <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Start-AzVpnConnectionPacketCapture -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
+ [-FilterData <String>] [-LinkConnectionName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByVpnConnectionInputObject
+### ByVpnConnectionObject
 ```
-Start-AzVpnConnectionPacketCapture -InputObject <PSVpnConnection> -LinkConnectionName <String>
- [-FilterData <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Start-AzVpnConnectionPacketCapture -InputObject <PSVpnConnection> [-FilterData <String>]
+ [-LinkConnectionName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVpnConnectionResourceId
 ```
-Start-AzVpnConnectionPacketCapture -ResourceId <String> -LinkConnectionName <String>
- [-FilterData <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
- [<CommonParameters>]
+Start-AzVpnConnectionPacketCapture -ResourceId <String> [-FilterData <String>] [-LinkConnectionName <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +55,7 @@ Name              : PktCaptureTestSite2Site1Cn
 Etag              :
 Id                :
 ```
+
 ### Example 2
 ```powershell
 $a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"IpSubnetValueAsAny`":true,`"TcpFlags`":-1,`"PortValueAsAny`":true,`"CaptureSingleDirectionTrafficOnly`":true}]}"
@@ -82,23 +82,10 @@ Id                :
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 Required: False
 Position: Named
 Default value: None
@@ -110,9 +97,10 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
 Required: False
 Position: Named
 Default value: None
@@ -124,9 +112,10 @@ Accept wildcard characters: False
 Filter options for start packet capture on Vpn connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -138,9 +127,10 @@ Accept wildcard characters: False
 The Vpn connection object where packet capture to be started.
 
 ```yaml
-Type: PSVpnConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
 Parameter Sets: ByVpnConnectionObject
 Aliases: VpnConnection
+
 Required: True
 Position: Named
 Default value: None
@@ -148,27 +138,29 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The Vpn connection name where packet capture to be started.
+### -LinkConnectionName
+The names of the SiteLinkConnection.
 
 ```yaml
-Type: String
-Parameter Sets: ByVpnConnectionName
-Aliases: ResourceName, VpnConnectionName
-Required: True
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name.
+### -Name
+The Vpn connection name where packet capture to be started.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnConnectionName
-Aliases:
+Aliases: ResourceName, VpnConnectionName, ConnectionName
+
 Required: True
 Position: Named
 Default value: None
@@ -180,9 +172,10 @@ Accept wildcard characters: False
 The name of the Parent Vpngateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnConnectionName
 Aliases: ParentVpnGatewayName, VpnGatewayName
+
 Required: True
 Position: Named
 Default value: None
@@ -190,13 +183,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkConnectionName
-The names of the SiteLinkConnection.
+### -ResourceGroupName
+The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByVpnConnectionName
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -208,13 +202,29 @@ Accept wildcard characters: False
 The Azure resource ID of the VpnConnection where packet capture to be started.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnConnectionResourceId
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -223,9 +233,10 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
 Required: False
 Position: Named
 Default value: None
@@ -249,4 +260,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Stop-AzVpnConnectionPacketCapture](./Stop-AzVpnConnectionPacketCapture.md)

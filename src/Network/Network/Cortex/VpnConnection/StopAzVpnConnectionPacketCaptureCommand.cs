@@ -23,7 +23,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnectionPacketCapture",
-        DefaultParameterSetName = "ByName", SupportsShouldProcess = true), OutputType(typeof(PSVpnConnectionPacketCaptureResult))]
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName, SupportsShouldProcess = true), OutputType(typeof(PSVpnConnectionPacketCaptureResult))]
     public class StopAzVpnConnectionPacketCaptureCommand : VpnConnectionBaseCmdlet
     {
         [Parameter(
