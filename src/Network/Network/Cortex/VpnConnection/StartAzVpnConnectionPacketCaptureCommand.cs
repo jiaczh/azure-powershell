@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnConnection
 
             if (this.LinkConnectionName != null)
             {
-                parameters.LinkConnectionNames = LinkConnectionName.Split(',');
+                parameters.LinkConnectionNames = LinkConnectionName.Split(',').Select(x => x.Trim()).ToList();
             }
 
             base.Execute();

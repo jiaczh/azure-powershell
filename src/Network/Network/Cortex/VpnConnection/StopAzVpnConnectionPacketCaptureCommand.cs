@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             if (this.LinkConnectionName != null)
             {
-                parameters.LinkConnectionNames = LinkConnectionName.Split(',');
+                parameters.LinkConnectionNames = LinkConnectionName.Split(',').Select(x => x.Trim()).ToList();
             }
 
             var existingConnection = parentGateway.Connections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
