@@ -843,38 +843,38 @@ function Test-VpnGatewayPacketCapture
 			$sasurl = "https://storage/test123?sp=racwdl&stvigopKcy"
 		}
 
-		    #StartPacketCapture on gateway with Name parameter
-			$output = Start-AzVpnGatewayPacketCapture -ResourceGroupName  $rgname -Name $vpnGatewayName
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Name $output.Name
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Location $output.Location
-			Assert-AreEqual $output.Code "Succeeded"
+		#StartPacketCapture on gateway with Name parameter
+		$output = Start-AzVpnGatewayPacketCapture -ResourceGroupName  $rgname -Name $vpnGatewayName
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Name $output.Name
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Location $output.Location
+		Assert-AreEqual $output.Code "Succeeded"
 
-			#StopPacketCapture on gateway with Name parameter
-			$output = Stop-AzVpnGatewayPacketCapture -ResourceGroupName  $rgname -Name $vpnGatewayName -SasUrl $sasurl
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Name $output.Name
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Location $output.Location
-			Assert-AreEqual $output.Code "Succeeded"
+		#StopPacketCapture on gateway with Name parameter
+		$output = Stop-AzVpnGatewayPacketCapture -ResourceGroupName  $rgname -Name $vpnGatewayName -SasUrl $sasurl
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Name $output.Name
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Location $output.Location
+		Assert-AreEqual $output.Code "Succeeded"
 
-			#StartPacketCapture on gateway object
-			$a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"IpSubnetValueAsAny`":true,`"TcpFlags`":-1,`"PortValueAsAny`":true,`"CaptureSingleDirectionTrafficOnly`":true}]}"
-			$output = Start-AzVpnGatewayPacketCapture -InputObject $createdVpnGateway -FilterData $a
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Name $output.Name
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Location $output.Location
-			Assert-AreEqual $output.Code "Succeeded"
+		#StartPacketCapture on gateway object
+		$a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"IpSubnetValueAsAny`":true,`"TcpFlags`":-1,`"PortValueAsAny`":true,`"CaptureSingleDirectionTrafficOnly`":true}]}"
+		$output = Start-AzVpnGatewayPacketCapture -InputObject $createdVpnGateway -FilterData $a
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Name $output.Name
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Location $output.Location
+		Assert-AreEqual $output.Code "Succeeded"
 
-			#StopPacketCapture on gateway object
-			$output = Stop-AzVpnGatewayPacketCapture -InputObject $createdVpnGateway -SasUrl $sasurl
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Name $output.Name
-			Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
-			Assert-AreEqual $createdVpnGateway.Location $output.Location
-			Assert-AreEqual $output.Code "Succeeded"
+		#StopPacketCapture on gateway object
+		$output = Stop-AzVpnGatewayPacketCapture -InputObject $createdVpnGateway -SasUrl $sasurl
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Name $output.Name
+		Assert-AreEqual $createdVpnGateway.ResourceGroupName $output.ResourceGroupName	
+		Assert-AreEqual $createdVpnGateway.Location $output.Location
+		Assert-AreEqual $output.Code "Succeeded"
 
 		# Delete the resources
 		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
@@ -922,12 +922,9 @@ function Test-VpnConnectionPacketCapture
 
 		# Create the Virtual Wan
 		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
-		$createdVirtualWan = Update-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -AllowVnetToVnetTraffic $false -AllowBranchToBranchTraffic $false
 		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
 		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
 		Assert-AreEqual $virtualWanName $virtualWan.Name
-		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
-		Assert-AreEqual $false $virtualWan.AllowBranchToBranchTraffic
 
 		# Create the Virtual Hub
 		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
@@ -960,15 +957,13 @@ function Test-VpnConnectionPacketCapture
 	    $vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $createdVpnSite.VpnSiteLinks[1] -ConnectionBandwidth 10
 
 		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $createdVpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
-		Assert-AreEqual $vpnConnectionName $createdVpnConnection.Name
-		Assert-AreEqual 2 $createdVpnConnection.VpnLinkConnections.Count
 
 		#create SAS URL
 		if ((Get-NetworkTestMode) -ne 'Playback')
 		{
 			$storetype = 'Standard_GRS'
 			$containerName = "testcontainer"
-			$storeName = 'sto' + $rgname;
+			$storeName = 'sto2' + $rgname;
 			New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $rglocation -Type $storetype
 			$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
 			$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
@@ -985,33 +980,24 @@ function Test-VpnConnectionPacketCapture
 		$SiteLinkConnections = $vpnSiteLinkConnection1.Name + "," + $vpnSiteLinkConnection2.Name
 		# StartPacketCapture on VpnConnection with Name parameter
 		$output = Start-AzVpnConnectionPacketCapture -ResourceGroupName  $rgname -Name $vpnConnectionName  -ParentResourceName $vpnGatewayName -LinkConnectionName $SiteLinkConnections
-		Assert-AreEqual $createdVpnConnection.ResourceGroupName $output.ResourceGroupName	
 		Assert-AreEqual $createdVpnConnection.Name $output.Name
-		Assert-AreEqual $createdVpnConnection.Location $output.Location
 		Assert-AreEqual $output.Code "Succeeded"
 
 		#StopPacketCapture on VpnConnection with Name parameter
 		$output = Stop-AzVpnConnectionPacketCapture -ResourceGroupName  $rgname -Name $vpnConnectionName  -ParentResourceName $vpnGatewayName -SasUrl $sasurl -LinkConnectionName $SiteLinkConnections
-		Assert-AreEqual $createdVpnConnection.ResourceGroupName $output.ResourceGroupName	
 		Assert-AreEqual $createdVpnConnection.Name $output.Name
-		Assert-AreEqual $createdVpnConnection.Location $output.Location
 		Assert-AreEqual $output.Code "Succeeded"
 
 		#StartPacketCapture on gateway object with filterData 
 		$a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"IpSubnetValueAsAny`":true,`"TcpFlags`":-1,`"PortValueAsAny`":true,`"CaptureSingleDirectionTrafficOnly`":true}]}"
 		$output = Start-AzVpnConnectionPacketCapture -InputObject $createdVpnConnection -FilterData $a -LinkConnectionName $SiteLinkConnections
-		Assert-AreEqual $createdVpnConnection.ResourceGroupName $output.ResourceGroupName	
 		Assert-AreEqual $createdVpnConnection.Name $output.Name
-		Assert-AreEqual $createdVpnConnection.Location $output.Location
 		Assert-AreEqual $output.Code "Succeeded"
 
 		#StopPacketCapture on gateway object
 		$output = Stop-AzVpnConnectionPacketCapture -InputObject $createdVpnConnection -SasUrl $sasurl -LinkConnectionName $SiteLinkConnections
-		Assert-AreEqual $createdVpnConnection.ResourceGroupName $output.ResourceGroupName	
 		Assert-AreEqual $createdVpnConnection.Name $output.Name
-		Assert-AreEqual $createdVpnConnection.Location $output.Location
 		Assert-AreEqual $output.Code "Succeeded"
-
 
         $delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
         Assert-AreEqual $True $delete
