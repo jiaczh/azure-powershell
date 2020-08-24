@@ -5053,6 +5053,7 @@
           "-1"
         ]
       },
+       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"btU5iTqNjO3PYBklkKjbelYQb/Waz/HhAWzWsLJsekAidTmJFKofOBnANODBPh3BQOQ7JXt3mmFigyUpP7XihA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"HG7AkLiYzVNrJyO5FtZSklsAw/UQNnbgYZsihi6pHp8eZS7z92HJPcgDYvrcqfcIdOF2cPKxUwLCbR0Dm5rP6A==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -5416,6 +5417,7 @@
       "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Network/vpnGateways/ps5630/vpnConnections/ps8868/stoppacketcapture?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92cG5HYXRld2F5cy9wczU2MzAvdnBuQ29ubmVjdGlvbnMvcHM4ODY4L3N0b3BwYWNrZXRjYXB0dXJlP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "POST",
+       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://sto2ps571.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=HgRFkJ%2F2pt33KafhzZHy59fuPdTzSo3QJdoRJccd%2BNQ%3D&st=2020-08-19T23%3A30%3A50Z&se=2020-08-21T00%3A30%3A50Z&sp=rwd\",\r\n  \"linkConnectionNames\": [\r\n    \"ps5584\",\r\n    \"ps1645\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -5498,6 +5500,7 @@
       "RequestUri": "/subscriptions/79ea0716-8a0e-4e48-a348-e3952d79809e/resourceGroups/ps571/providers/Microsoft.Network/vpnGateways/ps5630/vpnConnections/ps8868/stoppacketcapture?api-version=2020-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzllYTA3MTYtOGEwZS00ZTQ4LWEzNDgtZTM5NTJkNzk4MDllL3Jlc291cmNlR3JvdXBzL3BzNTcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92cG5HYXRld2F5cy9wczU2MzAvdnBuQ29ubmVjdGlvbnMvcHM4ODY4L3N0b3BwYWNrZXRjYXB0dXJlP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
       "RequestMethod": "POST",
+       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://sto2ps571.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=HgRFkJ%2F2pt33KafhzZHy59fuPdTzSo3QJdoRJccd%2BNQ%3D&st=2020-08-19T23%3A30%3A50Z&se=2020-08-21T00%3A30%3A50Z&sp=rwd\",\r\n  \"linkConnectionNames\": [\r\n    \"ps5584\",\r\n    \"ps1645\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
